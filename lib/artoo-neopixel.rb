@@ -1,0 +1,1 @@
+require "artoo-neopixel/extensions"
