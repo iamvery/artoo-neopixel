@@ -5,8 +5,12 @@ module Artoo
     class Neopixel < Driver
       COMMANDS = [:on, :off, :on?, :off?].freeze
 
+      attr_reader :count
+
       def initialize(params = {})
         @is_on = Hash.new(false)
+        additional_params = params.fetch(:additional_params) { Hash.new }
+        @count = additional_params.fetch(:count)
         super
       end
 
