@@ -19,12 +19,12 @@ module Artoo
       end
 
       def on(x, y, red, green, blue)
-        change_state(pin, x, y, red, green, blue)
+        change_state(x, y, red, green, blue)
         @is_on[[x,y]] = true
       end
 
       def off(x, y)
-        change_state(pin, x, y, 0, 0, 0)
+        change_state(x, y, 0, 0, 0)
         @is_on[[x,y]] = false
       end
 

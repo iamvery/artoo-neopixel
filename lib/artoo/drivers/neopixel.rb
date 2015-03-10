@@ -19,12 +19,12 @@ module Artoo
       end
 
       def on(index, red, green, blue)
-        change_state(pin, index, red, green, blue)
+        change_state(index, red, green, blue)
         @is_on[index] = true
       end
 
       def off(index)
-        change_state(pin, index, 0, 0, 0)
+        change_state(index, 0, 0, 0)
         @is_on[index] = false
       end
 
