@@ -2,7 +2,7 @@
 
 Add support for http://www.adafruit.com/neopixel to http://artoo.io.
 
-## Setup
+## Prerequisites
 
 ### Upload custom Firmata
 
@@ -12,7 +12,7 @@ Arduino IDE and upload it to your device.
 
 * [StandardFirmata-NeoPixel](https://github.com/iamvery/artoo-neopixel/blob/master/firmata/StandardFirmata-NeoPixel.ino)
 
-### Install
+## Install
 
 Install the NeoPixel extensions:
 
@@ -28,9 +28,9 @@ Add the gem to your Gemfile:
 gem "artoo-neopixel"
 ```
 
-### Run the example
+## Run the example
 
-#### NeoPixels
+### NeoPixels
 
 Here is a simple [example program](https://github.com/iamvery/artoo-neopixel/blob/master/examples/example-neopixel.rb).
 It assumes you have a single NeoPixel attached to pin **6** and strobes lot's
@@ -43,7 +43,7 @@ attached to!
 ruby example-neopixel.rb
 ```
 
-#### NeoMatrix
+### NeoMatrix
 
 Here is a simple [example program](https://github.com/iamvery/artoo-neopixel/blob/master/examples/example-neomatrix.rb).
 It assumes you have a single NeoMatrix attached to pin **6** and strobes lot's
