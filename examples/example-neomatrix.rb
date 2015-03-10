@@ -15,9 +15,9 @@ work do
   loop do
     x = (5*rand).round
     y = (8*rand).round
-    red = (255*rand).round
-    green = (255*rand).round
-    blue = (255*rand).round
+    red = (100*rand).round
+    green = (100*rand).round
+    blue = (100*rand).round
     matrix.on(x, y, red, green, blue)
     sleep 0.01
   end
