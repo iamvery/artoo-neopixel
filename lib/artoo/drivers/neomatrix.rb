@@ -5,13 +5,14 @@ module Artoo
     class Neomatrix < Driver
       COMMANDS = [:on, :off, :on?, :off?].freeze
 
-      attr_reader :width, :height
+      attr_reader :width, :height, :registered
 
       def initialize(params = {})
         @is_on = Hash.new(false)
         additional_params = params.fetch(:additional_params) { Hash.new }
         @width = additional_params.fetch(:width)
         @height = additional_params.fetch(:height)
+        @registered = false
         super
       end
 
@@ -36,7 +37,15 @@ module Artoo
       private
 
       def change_state(x, y, red, green, blue)
+        ensure_registered
         connection.neomatrix(x, y, red, green, blue)
+      end
+
+      def ensure_registered
+        unless registered
+          connection.register_neomatrix(pin, width, height)
+          @registered = true
+        end
       end
     end
   end

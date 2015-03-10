@@ -5,12 +5,13 @@ module Artoo
     class Neopixel < Driver
       COMMANDS = [:on, :off, :on?, :off?].freeze
 
-      attr_reader :count
+      attr_reader :count, :registered
 
       def initialize(params = {})
         @is_on = Hash.new(false)
         additional_params = params.fetch(:additional_params) { Hash.new }
         @count = additional_params.fetch(:count)
+        @registered = false
         super
       end
 
@@ -35,7 +36,15 @@ module Artoo
       private
 
       def change_state(index, red, green, blue)
+        ensure_registered
         connection.neopixel(index, red, green, blue)
+      end
+
+      def ensure_registered
+        unless registered
+          connection.register_neopixel(pin, count)
+          @registered = true
+        end
       end
     end
   end
