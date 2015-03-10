@@ -46,6 +46,19 @@
 
 #define REGISTER_NOT_SPECIFIED -1
 
+/* NEOPIXELS */
+#include <Adafruit_GFX.h>
+#include <Adafruit_NeoMatrix.h>
+#include <Adafruit_NeoPixel.h>
+#define NEOPIXEL 0x72
+#define NEOMATRIX 0x73
+#define NEOPIXEL_REGISTER 0x74
+#define NEOMATRIX_REGISTER 0x75
+#define MAX_NEO 1
+
+Adafruit_NeoPixel *neopixels = NULL;
+Adafruit_NeoMatrix *neomatrix = NULL;
+
 /*==============================================================================
  * GLOBAL VARIABLES
  *============================================================================*/
@@ -510,6 +523,56 @@ void sysexCallback(byte command, byte argc, byte *argv)
         Firmata.write(IS_PIN_ANALOG(pin) ? PIN_TO_ANALOG(pin) : 127);
       }
       Firmata.write(END_SYSEX);
+      break;
+    case NEOPIXEL_REGISTER:
+      {
+        int pin = argv[0];
+        int count = argv[1];
+
+        if (neopixels != NULL) {
+          delete neopixels;
+        }
+        neopixels = new Adafruit_NeoPixel(count, pin, NEO_GRB + NEO_KHZ800);
+        neopixels->begin();
+      }
+      break;
+    case NEOPIXEL:
+      {
+        int index = argv[0];
+        int red = argv[1];
+        int green = argv[2];
+        int blue = argv[3];
+        neopixels->setPixelColor(index, neopixels->Color(red, green, blue));
+        neopixels->show();
+      }
+      break;
+    case NEOMATRIX_REGISTER:
+      {
+        int pin = argv[0];
+        int width = argv[1];
+        int height = argv[2];
+
+        if (neomatrix != NULL) {
+          delete neomatrix;
+        }
+        neomatrix = new Adafruit_NeoMatrix(width, height, pin,
+          NEO_MATRIX_TOP     + NEO_MATRIX_RIGHT +
+          NEO_MATRIX_COLUMNS + NEO_MATRIX_PROGRESSIVE,
+          NEO_GRB            + NEO_KHZ800);
+        neomatrix->begin();
+      }
+      break;
+    case NEOMATRIX:
+      {
+        int id = 0;
+        int x = argv[0];
+        int y = argv[1];
+        int red = argv[2];
+        int green = argv[3];
+        int blue = argv[4];
+        neomatrix->drawPixel(x, y, neomatrix->Color(red, green, blue));
+        neomatrix->show();
+      }
       break;
   }
 }
