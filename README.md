@@ -58,4 +58,4 @@ ruby example-neomatrix.rb
 
 ## Known Issues
 
-* Currently the library only supports a single pixel-strip and matrix. #1
+* Currently the library only supports a single pixel-strip and matrix. https://github.com/iamvery/artoo-neopixel/issues/1
