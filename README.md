@@ -55,3 +55,7 @@ attached to!
 ```
 ruby example-neomatrix.rb
 ```
+
+## Known Issues
+
+* Currently the library only supports a single pixel-strip and matrix. issues/1
