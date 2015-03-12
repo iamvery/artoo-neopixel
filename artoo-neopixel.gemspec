@@ -13,8 +13,8 @@ Gem::Specification.new do |s|
   s.files = FileList["lib/**/*.rb"]
   s.require_paths = ["lib"]
 
-  s.add_runtime_dependency "artoo-arduino"
-  s.add_runtime_dependency "hybridgroup-firmata"
-  s.add_development_dependency "pry"
-  s.add_development_dependency "rake"
+  s.add_runtime_dependency "artoo-arduino", "~>1.0"
+  s.add_runtime_dependency "hybridgroup-firmata", "~>0.2"
+  s.add_development_dependency "pry", ">=0.9"
+  s.add_development_dependency "rake", "~>10.4"
 end
