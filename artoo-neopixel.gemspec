@@ -8,6 +8,7 @@ Gem::Specification.new do |s|
   s.homepage = "https://github.com/iamvery/artoo-neopixel"
   s.summary = "Add Neopixel support to Artoo"
   s.description = "This library extends http://artoo.io to support http://www.adafruit.com/neopixel."
+  s.licenses = ["MIT"]
 
   s.files = FileList["lib/**/*.rb"]
   s.require_paths = ["lib"]
